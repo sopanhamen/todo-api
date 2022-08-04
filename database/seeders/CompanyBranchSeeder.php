@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-// use App\Modules\Company\Company;
-// use App\Modules\CompanyBranch\CompanyBranch;
+use App\Modules\Company\Company;
+use App\Modules\CompanyBranch\CompanyBranch;
 use Illuminate\Database\Seeder;
 
 class CompanyBranchSeeder extends Seeder

@@ -12,7 +12,7 @@ use App\Modules\Property\Enum\Purpose;
 use App\Modules\Common\Enum\FormLayout;
 use App\Modules\Common\Enum\LengthUnit;
 use App\Modules\Common\Enum\RoadCondition;
-// use App\Modules\CompanyBranch\CompanyBranch;
+use App\Modules\CompanyBranch\CompanyBranch;
 use App\Modules\Contact\Contact;
 use App\Modules\Property\Enum\ListingStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
