@@ -6,7 +6,7 @@ use App\Libraries\Crud\CrudService;
 
 class UserProfileService extends CrudService
 {
-    protected array $allowedRelations = [];
+    protected array $allowedRelations = ['contact'];
 
     public function __construct(UserProfileRepository $repo)
     {

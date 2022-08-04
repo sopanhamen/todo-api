@@ -2,12 +2,14 @@
 
 namespace App\Modules\Province;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Modules\Province\Exports\ProvincesExport;
 use App\Modules\Province\ProvinceService;
 use App\Modules\Province\Resources\ProvinceResource;
 use App\Modules\Province\Requests\CreateProvinceRequest;
 use App\Modules\Province\Requests\UpdateProvinceRequest;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProvinceController extends Controller
 {
@@ -15,7 +17,7 @@ class ProvinceController extends Controller
 
     public function __construct(ProvinceService $provinceService)
     {
-        // $this->middleware('auth');
+        $this->middleware('auth')->except(['index', 'show']);
         $this->provinceService = $provinceService;
     }
 
@@ -31,27 +33,8 @@ class ProvinceController extends Controller
      */
     public function index(Request $request)
     {
-        // $this->authorize('viewAny', Province::class);
-
         $provinces = $this->provinceService->paginate($request->all());
         return ProvinceResource::collection($provinces);
-    }
-
-    /**
-     * @OA\GET(
-     *     path="/api/provinces/{id}",
-     *     tags={"Provinces"},
-     *     summary="Get Province detail",
-     *     @OA\Response(response=400, description="Bad request"),
-     *     @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
-    public function show(Request $request, int $id)
-    {
-        // $this->authorize('view', Province::class);
-
-        $province = $this->provinceService->getOneOrFail($id, $request->all());
-        return new ProvinceResource($province);
     }
 
     /**
@@ -59,16 +42,31 @@ class ProvinceController extends Controller
      *     path="/api/provinces",
      *     tags={"Provinces"},
      *     summary="Create a new Province",
+     *     description="Create a new Province",
      *     @OA\Response(response=400, description="Bad request"),
      *     @OA\Response(response=422, description="Unprocessable Entity"),
      * )
      */
     public function store(CreateProvinceRequest $request)
     {
-        // $this->authorize('create', Province::class);
+        $provinces = $this->provinceService->createOne($request->all());
+        return new ProvinceResource($provinces);
+    }
 
-        $province = $this->provinceService->createOne($request->all());
-        return new ProvinceResource($province);
+    /**
+     * @OA\GET(
+     *     path="/api/provinces/{id}",
+     *     tags={"Provinces"},
+     *     summary="Get provinces detail",
+     *     description="Get provinces detail by ID",
+     *     @OA\Response(response=400, description="Bad request"),
+     *     @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+    public function show(Request $request, string $id)
+    {
+        $provinces = $this->provinceService->getOneOrFail($id, $request->all());
+        return new ProvinceResource($provinces);
     }
 
     /**
@@ -76,16 +74,15 @@ class ProvinceController extends Controller
      *     path="/api/provinces/{id}",
      *     tags={"Provinces"},
      *     summary="Update an existing Province",
+     *     description="Update an existing Province",
      *     @OA\Response(response=400, description="Bad request"),
      *     @OA\Response(response=422, description="Unprocessable Entity"),
      * )
      */
-    public function update(UpdateProvinceRequest $request, int $id)
+    public function update(UpdateProvinceRequest $request, string $id)
     {
-        $this->authorize('update', Province::class);
-
-        $province = $this->provinceService->updateOne($id, $request->all());
-        return new ProvinceResource($province);
+        $provinces = $this->provinceService->updateOne($id, $request->all());
+        return new ProvinceResource($provinces);
     }
 
     /**
@@ -93,32 +90,28 @@ class ProvinceController extends Controller
      *     path="/api/provinces/{id}",
      *     tags={"Provinces"},
      *     summary="Delete a Province",
+     *     description="Delete a Province",
      *     @OA\Response(response=400, description="Bad request"),
      *     @OA\Response(response=404, description="Resource Not Found"),
      * )
      */
-    public function destroy(int $id)
+    public function destroy(string $id)
     {
-        // $this->authorize('delete', Province::class);
-
-        $province = $this->provinceService->deleteOne($id);
-        return new ProvinceResource($province);
+        $provinces = $this->provinceService->deleteOne($id);
+        return new ProvinceResource($provinces);
     }
 
     /**
      * @OA\POST(
-     *     path="/api/provinces/{id}/restore",
+     *     path="/api/provinces/exports",
      *     tags={"Provinces"},
-     *     summary="Restore a Province from trash",
+     *     summary="Export provinces to excel",
      *     @OA\Response(response=400, description="Bad request"),
      *     @OA\Response(response=404, description="Resource Not Found"),
      * )
      */
-    public function restore(int $id)
+    public function exports()
     {
-        // $this->authorize('restore', Province::class);
-
-        $province = $this->provinceService->restoreOne($id);
-        return new ProvinceResource($province);
+        return Excel::download(new ProvincesExport, 'provinces.xlsx');
     }
 }

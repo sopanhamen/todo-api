@@ -16,6 +16,7 @@ class UserProfileController extends Controller
     public function __construct(UserProfileService $userProfileService)
     {
         $this->middleware('auth');
+        $this->authorizeResource(UserProfile::class, 'user_profile');
         $this->userProfileService = $userProfileService;
     }
 
@@ -31,8 +32,6 @@ class UserProfileController extends Controller
      */
     public function index(Request $request)
     {
-        $this->authorize('viewAny', UserProfile::class);
-
         $userProfiles = $this->userProfileService->paginate($request->all());
         return UserProfileResource::collection($userProfiles);
     }
@@ -46,10 +45,8 @@ class UserProfileController extends Controller
      *     @OA\Response(response=404, description="Resource Not Found"),
      * )
      */
-    public function show(Request $request, int $id)
+    public function show(Request $request, string $id)
     {
-        $this->authorize('view', UserProfile::class);
-
         $userProfile = $this->userProfileService->getOneOrFail($id, $request->all());
         return new UserProfileResource($userProfile);
     }
@@ -65,8 +62,6 @@ class UserProfileController extends Controller
      */
     public function store(CreateUserProfileRequest $request)
     {
-        $this->authorize('create', UserProfile::class);
-
         $userProfile = $this->userProfileService->createOne($request->all());
         return new UserProfileResource($userProfile);
     }
@@ -80,10 +75,8 @@ class UserProfileController extends Controller
      *     @OA\Response(response=422, description="Unprocessable Entity"),
      * )
      */
-    public function update(UpdateUserProfileRequest $request, int $id)
+    public function update(UpdateUserProfileRequest $request, string $id)
     {
-        $this->authorize('update', UserProfile::class);
-
         $userProfile = $this->userProfileService->updateOne($id, $request->all());
         return new UserProfileResource($userProfile);
     }
@@ -91,34 +84,15 @@ class UserProfileController extends Controller
     /**
      * @OA\DELETE(
      *     path="/api/user-profiles/{id}",
-     *     tags={"User Profiles"},
+     *    tags={"User Profiles"},
      *     summary="Delete a User Profile",
      *     @OA\Response(response=400, description="Bad request"),
      *     @OA\Response(response=404, description="Resource Not Found"),
      * )
      */
-    public function destroy(int $id)
+    public function destroy(string $id)
     {
-        $this->authorize('delete', UserProfile::class);
-
         $userProfile = $this->userProfileService->deleteOne($id);
-        return new UserProfileResource($userProfile);
-    }
-
-    /**
-     * @OA\POST(
-     *     path="/api/user-profiles/{id}/restore",
-     *     tags={"User Profiles"},
-     *     summary="Restore a User Profile from trash",
-     *     @OA\Response(response=400, description="Bad request"),
-     *     @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
-    public function restore(int $id)
-    {
-        $this->authorize('restore', UserProfile::class);
-
-        $userProfile = $this->userProfileService->restoreOne($id);
         return new UserProfileResource($userProfile);
     }
 }

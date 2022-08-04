@@ -2,9 +2,10 @@
 
 namespace App\Modules\Country;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Modules\Country\CountryService;
+use App\Modules\Country\Exports\CountriesExport;
 use App\Modules\Country\Resources\CountryResource;
 use App\Modules\Country\Requests\CreateCountryRequest;
 use App\Modules\Country\Requests\UpdateCountryRequest;
@@ -16,7 +17,7 @@ class CountryController extends Controller
 
     public function __construct(CountryService $countryService)
     {
-        $this->middleware('auth')->except(['index', 'show','store']);
+        $this->middleware('auth')->except(['index', 'show']);
         $this->countryService = $countryService;
     }
 
@@ -32,27 +33,8 @@ class CountryController extends Controller
      */
     public function index(Request $request)
     {
-        $this->authorize('viewAny', Country::class);
-
         $countries = $this->countryService->paginate($request->all());
         return CountryResource::collection($countries);
-    }
-
-    /**
-     * @OA\GET(
-     *     path="/api/countries/{id}",
-     *     tags={"Countries"},
-     *     summary="Get Country detail",
-     *     @OA\Response(response=400, description="Bad request"),
-     *     @OA\Response(response=404, description="Resource Not Found"),
-     * )
-     */
-    public function show(Request $request, string $id)
-    {
-        $this->authorize('view', Country::class);
-
-        $country = $this->countryService->getOneOrFail($id, $request->all());
-        return new CountryResource($country);
     }
 
     /**
@@ -60,16 +42,31 @@ class CountryController extends Controller
      *     path="/api/countries",
      *     tags={"Countries"},
      *     summary="Create a new Country",
+     *     description="Create a new Country",
      *     @OA\Response(response=400, description="Bad request"),
      *     @OA\Response(response=422, description="Unprocessable Entity"),
      * )
      */
     public function store(CreateCountryRequest $request)
     {
-        $this->authorize('create', Country::class);
+        $countries = $this->countryService->createOne($request->all());
+        return new CountryResource($countries);
+    }
 
-        $country = $this->countryService->createOne($request->all());
-        return new CountryResource($country);
+    /**
+     * @OA\GET(
+     *     path="/api/countries/{id}",
+     *     tags={"Countries"},
+     *     summary="Get countries detail",
+     *     description="Get countries detail by ID",
+     *     @OA\Response(response=400, description="Bad request"),
+     *     @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     */
+    public function show(Request $request, string $id)
+    {
+        $countries = $this->countryService->getOneOrFail($id, $request->all());
+        return new CountryResource($countries);
     }
 
     /**
@@ -77,16 +74,15 @@ class CountryController extends Controller
      *     path="/api/countries/{id}",
      *     tags={"Countries"},
      *     summary="Update an existing Country",
+     *     description="Update an existing Country",
      *     @OA\Response(response=400, description="Bad request"),
      *     @OA\Response(response=422, description="Unprocessable Entity"),
      * )
      */
     public function update(UpdateCountryRequest $request, string $id)
     {
-        // $this->authorize('update', Country::class);
-
-        $country = $this->countryService->updateOne($id, $request->all());
-        return new CountryResource($country);
+        $countries = $this->countryService->updateOne($id, $request->all());
+        return new CountryResource($countries);
     }
 
     /**
@@ -94,35 +90,26 @@ class CountryController extends Controller
      *     path="/api/countries/{id}",
      *     tags={"Countries"},
      *     summary="Delete a Country",
+     *     description="Delete a Country",
      *     @OA\Response(response=400, description="Bad request"),
      *     @OA\Response(response=404, description="Resource Not Found"),
      * )
      */
-    public function destroy(int $id)
+    public function destroy(string $id)
     {
-        // $this->authorize('delete', Country::class);
-
-        $country = $this->countryService->deleteOne($id);
-        return new CountryResource($country);
+        $countries = $this->countryService->deleteOne($id);
+        return new CountryResource($countries);
     }
 
     /**
      * @OA\POST(
-     *     path="/api/countries/{id}/restore",
+     *     path="/api/countries/exports",
      *     tags={"Countries"},
-     *     summary="Restore a Country from trash",
+     *     summary="Export countries to excel",
      *     @OA\Response(response=400, description="Bad request"),
      *     @OA\Response(response=404, description="Resource Not Found"),
      * )
      */
-    public function restore(int $id)
-    {
-        // $this->authorize('restore', Country::class);
-
-        $country = $this->countryService->restoreOne($id);
-        return new CountryResource($country);
-    }
-
     public function exports()
     {
         return Excel::download(new CountriesExport, 'countries.xlsx');

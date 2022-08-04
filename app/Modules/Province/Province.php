@@ -2,16 +2,23 @@
 
 namespace App\Modules\Province;
 
+use App\Libraries\Cache\Cacheable;
 use App\Libraries\Crud\CrudModel;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Libraries\Database\Traits\HasAuthors;
 use OwenIt\Auditing\Contracts\Auditable;
+use App\Libraries\Database\Traits\HasAuthors;
+use App\Libraries\Database\Traits\UuidPrimaryKey;
+use App\Modules\Country\Country;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Province extends CrudModel implements Auditable
 {
-    use HasFactory, SoftDeletes, HasAuthors, \OwenIt\Auditing\Auditable;
-
+    use Cacheable,
+        HasFactory,
+        SoftDeletes,
+        HasAuthors,
+        UuidPrimaryKey,
+        \OwenIt\Auditing\Auditable;
 
     protected $table = "provinces";
 

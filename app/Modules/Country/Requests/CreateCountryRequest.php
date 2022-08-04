@@ -11,7 +11,7 @@ class CreateCountryRequest extends CountryRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

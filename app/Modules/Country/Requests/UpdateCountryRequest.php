@@ -2,6 +2,8 @@
 
 namespace App\Modules\Country\Requests;
 
+use Illuminate\Validation\Rule;
+
 class UpdateCountryRequest extends CountryRequest
 {
     /**
@@ -11,7 +13,7 @@ class UpdateCountryRequest extends CountryRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

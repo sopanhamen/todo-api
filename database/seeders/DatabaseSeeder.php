@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +13,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call(SettingsSeeders::class);
+        $this->call(PermissionsSeeder::class);
+        $this->call(RolesSeeder::class);
+        $this->call(CountrySeeder::class);
+        $this->call(ProvinceSeeder::class);
+        $this->call(DistrictSeeder::class);
+        $this->call(CommuneSeeder::class);
+        $this->call(CompanySeeder::class);
+        $this->call(FacilitiesSeeder::class);
+        $this->call(PropertyTypeSeeder::class);
+        $this->call(UserSeeder::class);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        if (config('app.env') === 'local') {
+            // test data seeders here
+            $this->call(CompanyBranchSeeder::class);
+            // $this->call(CompaniesTestSeeder::class);
+            $this->call(UserTestsSeeder::class);
+            $this->call(DevelopmentTypeSeeder::class);
+            $this->call(DeveloperSeeder::class);
+            $this->call(ProjectSeeder::class);
+            $this->call(ClientTypeSeeder::class);
+            // $this->call(ClientSeeder::class);
+            $this->call(PropertiesSeeder::class);
+        }
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Modules\Country\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 class CountryRequest extends FormRequest
 {
@@ -27,15 +27,15 @@ class CountryRequest extends FormRequest
         return [
             "name" => [
                 "required",
-                Rule::unique('countries', 'name')->where(function($query) {
+                Rule::unique('countries', 'name')->where(function ($query) {
                     return $query->where('deleted_at', NULL);
-                })
+                }),
             ],
             "code" => [
                 "required",
-                Rule::unique('countries', 'code')->where(function($query){
+                Rule::unique('countries', 'code')->where(function ($query) {
                     return $query->where('deleted_at', NULL);
-                })
+                }),
             ],
             "iso_code" => "required",
             "published" => "required|boolean",

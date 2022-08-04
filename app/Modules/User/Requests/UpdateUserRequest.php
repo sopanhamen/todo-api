@@ -2,6 +2,9 @@
 
 namespace App\Modules\User\Requests;
 
+use App\Rules\PhoneNumber;
+use Illuminate\Validation\Rule;
+
 class UpdateUserRequest extends UserRequest
 {
     /**
@@ -11,7 +14,7 @@ class UpdateUserRequest extends UserRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +24,21 @@ class UpdateUserRequest extends UserRequest
      */
     public function rules()
     {
+        $userId = $this->route('user');
         return [
             ...parent::rules(),
+            'email' => [
+                'nullable',
+                'max:255',
+                'email',
+                Rule::unique('users', 'email')->ignore($userId, 'id'),
+            ],
+            'phone' => [
+                'required',
+                new PhoneNumber,
+                Rule::unique('users', 'phone')->ignore($userId, 'id'),
+            ],
+            'password' => 'nullable|confirmed',
         ];
     }
 }

@@ -11,7 +11,7 @@ class CreateProvinceRequest extends ProvinceRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
