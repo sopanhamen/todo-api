@@ -1,0 +1,3699 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Basic CRUD Laravel API Documentation",
+        "description": "API Documentation - Basic CRUD Laravel",
+        "contact": {
+            "email": "info@app-appraisal.com"
+        },
+        "license": {
+            "name": "@app-appraisal",
+            "url": "https://app-appraisal.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/agents": {
+            "get": {
+                "tags": [
+                    "Agents"
+                ],
+                "summary": "Get Agents list",
+                "description": "Get Agents List as Array",
+                "operationId": "266ee25cd80b61682d66341c68ae72a9",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/agents/{id}": {
+            "get": {
+                "tags": [
+                    "Agents"
+                ],
+                "summary": "Get Agent detail",
+                "operationId": "09f513fa98a8af302f1fa587047b58f1",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Login",
+                "description": "Login",
+                "operationId": "47eabf0df06a12d888949a765ad37d03",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "manirujjamanakash@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "123456"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable entity"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Register User",
+                "description": "Register New User",
+                "operationId": "e6e6fa9f24be2e077081049aec37766e",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Jhon Doe"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "jhondoe@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "123456"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "example": "123456"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Register New User Data"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/auth/me": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Authenticated User Profile",
+                "description": "Authenticated User Profile",
+                "operationId": "658c229eb4abf9aba7b87d178a42edf9",
+                "responses": {
+                    "200": {
+                        "description": "Authenticated User Profile"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/auth/logout": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Logout",
+                "description": "Logout",
+                "operationId": "5f486cec99cd3b8756d0eba0d44812cd",
+                "responses": {
+                    "200": {
+                        "description": "Logout"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/users/permissions": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Get permissions of current user",
+                "description": "Get permissions of current user",
+                "operationId": "e8d61e12549d981e22f3e1936e5d39be",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/auth/update-profile": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Update profile of current user",
+                "description": "Update profile of current user",
+                "operationId": "e51ffd5e92d0eb9be433a445696ed553",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/auth/forget-password": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Forget password of current user",
+                "description": "Forget password of current user",
+                "operationId": "428400da821b86da2978003455b58bbb",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/auth/update-password": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Update password of current user",
+                "description": "Update password of current user",
+                "operationId": "2abd55a8c22ad39169619c82253a413d",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/banks": {
+            "get": {
+                "tags": [
+                    "Banks"
+                ],
+                "summary": "Get Banks list",
+                "operationId": "9fe9064050c1b0eec212506eecf2259a",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Banks"
+                ],
+                "summary": "Create a new Bank",
+                "operationId": "b4db68f17adcb8a30fde57a6439847d0",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/banks/{id}": {
+            "get": {
+                "tags": [
+                    "Banks"
+                ],
+                "summary": "Get Banks detail",
+                "operationId": "df63473aaab8e2bdf183a251659512f0",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Banks"
+                ],
+                "summary": "Update an existing Bank",
+                "operationId": "26037f99b015fdaad9f89d59a9547a48",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Banks"
+                ],
+                "summary": "Delete a Bank",
+                "operationId": "b442b324b8bc1508ae252dcaccdb034d",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/banks/branches": {
+            "get": {
+                "tags": [
+                    "Bank Branches"
+                ],
+                "summary": "Get Bank Branches list",
+                "operationId": "a78d08d84c289d7fd7455d3cf75624c2",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Bank Branches"
+                ],
+                "summary": "Create a new Branch",
+                "operationId": "727233754f103622562b69428b998edf",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/banks/branches/{id}": {
+            "get": {
+                "tags": [
+                    "Bank Branches"
+                ],
+                "summary": "Get Bank Branch detail",
+                "operationId": "b996c7ea8acc01e76234b0daf8768dd9",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Bank Branches"
+                ],
+                "summary": "Update an existing Bank Branch",
+                "operationId": "c5aa519af855101e371ba41e6427c879",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Bank Branches"
+                ],
+                "summary": "Delete a Bank branch",
+                "operationId": "708d33f2c3d9e1b4792529ba6bc57c12",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/clients": {
+            "get": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Get Clients list",
+                "description": "Get Clients List as Array",
+                "operationId": "09277cdff2bbcd792fe1c9aa9ef1137e",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Create a new Client",
+                "operationId": "0e34d2d15dc8f7cd192f552227ee89a4",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/clients/{id}": {
+            "get": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Get Client detail",
+                "operationId": "88b326ddcb65425493dd350045fa8fcd",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Update an existing Client",
+                "operationId": "5911677a936947eb63280652e8af5763",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Delete a Client",
+                "operationId": "c56cb4bf055c0550d7e0817b0a06777a",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/clients/{id}/restore": {
+            "post": {
+                "tags": [
+                    "Clients"
+                ],
+                "summary": "Restore a Client from trash",
+                "operationId": "ef6c9b76ceecad07c90317b1ce4160b6",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/client-payments": {
+            "get": {
+                "tags": [
+                    "Client Payments"
+                ],
+                "summary": "Get Client Payments list",
+                "description": "Get Client Payments List as Array",
+                "operationId": "7662a5beab6f8ae6848da907488679ca",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Client Payments"
+                ],
+                "summary": "Create a new Client Payment",
+                "operationId": "9a50264dee4f33249d57f6f54c99cb4e",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/client-payments/{id}": {
+            "get": {
+                "tags": [
+                    "Client Payments"
+                ],
+                "summary": "Get Client Payment detail",
+                "operationId": "bca2bb69f7254ca4081a8a42d321f972",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Client Payments"
+                ],
+                "summary": "Update an existing Client Payment",
+                "operationId": "cf6fe550cdb65cd06520227042c6647b",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Client Payments"
+                ],
+                "summary": "Delete a Client Payment",
+                "operationId": "cc8a92be3b7b76bd1f150fb67fdfda72",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/client-payments/{id}/restore": {
+            "post": {
+                "tags": [
+                    "Client Payments"
+                ],
+                "summary": "Restore a Client Payment from trash",
+                "operationId": "2a0b6e16c7ee31c716a05490fab5a910",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/payments/{payment}/documents/{document}": {
+            "get": {
+                "tags": [
+                    "Client Payments"
+                ],
+                "summary": "download document",
+                "operationId": "4651ed3d8047ec16cc4da6a55df8d788",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/client-payments/{id}/upload-documents": {
+            "post": {
+                "tags": [
+                    "Client Payments"
+                ],
+                "summary": "Upload Payment Documents",
+                "operationId": "b81942a0ed6a2c3f1692c2111882b2a8",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/client-payments/{payment}/documents/{document}": {
+            "delete": {
+                "tags": [
+                    "Client Payments"
+                ],
+                "summary": "Delete Payment document",
+                "operationId": "e4631c7cc58ca274c053bf36bce25a8b",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/client-requirements": {
+            "get": {
+                "tags": [
+                    "Client Requirements"
+                ],
+                "summary": "Get Client Requirements list",
+                "description": "Get Client Requirements List as Array",
+                "operationId": "47e6866f2179f1618568aaac8a272e51",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Client Requirements"
+                ],
+                "summary": "Create a new Client Requirement",
+                "operationId": "aeafa0b65978d885f743574ac564c7b9",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/client-requirements/{id}": {
+            "get": {
+                "tags": [
+                    "Client Requirements"
+                ],
+                "summary": "Get Client Requirement detail",
+                "operationId": "86e21d0d31954db05acbf28555340ab9",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Client Requirements"
+                ],
+                "summary": "Update an existing Client Requirement",
+                "operationId": "4b8662efa2baefc8e053ae3f2c16ca39",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Client Requirements"
+                ],
+                "summary": "Delete a Client Requirement",
+                "operationId": "3090f1509e9c3b69742993b838cc2e42",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/client-requirements/{id}/restore": {
+            "post": {
+                "tags": [
+                    "Client Requirements"
+                ],
+                "summary": "Restore a Client Requirement from trash",
+                "operationId": "ec700f597ccd91ef75af6fab8e8242b1",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/client-requirements/{id}/complete": {
+            "post": {
+                "tags": [
+                    "Client Requirements"
+                ],
+                "summary": "Complete a Client Requirement",
+                "operationId": "2aae1fcf31909ddab09000561614bf31",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/client-requirements/{id}/cancel": {
+            "post": {
+                "tags": [
+                    "Client Requirements"
+                ],
+                "summary": "Complete a Client Requirement",
+                "operationId": "bc50b138516ab5a960f7d833acd9a6ee",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/client-types": {
+            "get": {
+                "tags": [
+                    "Client Types"
+                ],
+                "summary": "Get Client Types list",
+                "description": "Get Client Types List as Array",
+                "operationId": "b5a3407984fd20a1ab712963889e41c2",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Client Types"
+                ],
+                "summary": "Create a new Client Type",
+                "description": "Create a new Client Type",
+                "operationId": "ff53db751bfd874b41ac9d085e7994ee",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/client-types/trash": {
+            "get": {
+                "tags": [
+                    "Client Types"
+                ],
+                "summary": "Get Client Types list",
+                "description": "Get Client Types List as Array",
+                "operationId": "ba30180279c86b72c0cb88d87548981b",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/client-types/{id}": {
+            "get": {
+                "tags": [
+                    "Client Types"
+                ],
+                "summary": "Get Client Types detail",
+                "description": "Get Client Types detail by ID",
+                "operationId": "4a022e072535ed9897c5aa0a533902fd",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Client Types"
+                ],
+                "summary": "Update an existing Client Type",
+                "description": "Update an existing Client Type",
+                "operationId": "97a6b0bc1594444408b4f400b44a2ab3",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Client Types"
+                ],
+                "summary": "Delete a Client Type",
+                "description": "Delete a Client Type",
+                "operationId": "820169741414644c43b1b6e70254bafa",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/client-types/{id}/restore": {
+            "delete": {
+                "tags": [
+                    "Client Types"
+                ],
+                "summary": "Delete a Client Type",
+                "description": "Delete a Client Type",
+                "operationId": "96e680de8ff9dcc53b66ce66d91cc84e",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/client-types/exports": {
+            "post": {
+                "tags": [
+                    "Client Types"
+                ],
+                "summary": "Export client-types to excel",
+                "operationId": "4cdf296b3b5e1645c64ad2eb99282ab0",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/communes": {
+            "get": {
+                "tags": [
+                    "Communes"
+                ],
+                "summary": "Get Communes list",
+                "description": "Get Communes List as Array",
+                "operationId": "76a28122403215cfc66bcb8a5be45a45",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Communes"
+                ],
+                "summary": "Create a new Commune",
+                "description": "Create a new Commune",
+                "operationId": "e0281d09e4dfde07200900c9a4eae2e9",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/communes/{id}": {
+            "get": {
+                "tags": [
+                    "Communes"
+                ],
+                "summary": "Get communes detail",
+                "description": "Get communes detail by ID",
+                "operationId": "ac3fb8efddc9655e0e21e1501d4f98e6",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Communes"
+                ],
+                "summary": "Update an existing Commune",
+                "description": "Update an existing Commune",
+                "operationId": "0b628a872d76b2bad714f3355abe1169",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Communes"
+                ],
+                "summary": "Delete a Commune",
+                "description": "Delete a Commune",
+                "operationId": "819d5b49beb0308d9fe1de3fce4d6e17",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/communes/exports": {
+            "post": {
+                "tags": [
+                    "Communes"
+                ],
+                "summary": "Export communes to excel",
+                "operationId": "83797ce9f341045ecd0aee3697d1096d",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/companies": {
+            "get": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Get Companies list",
+                "description": "Get Companies List as Array",
+                "operationId": "014e97c0dc1554659c8ec14a300f37de",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Create a new Company",
+                "description": "Create a new Company",
+                "operationId": "3c7ad35486b413f230eb5a2338f2d34e",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/companies/{id}": {
+            "get": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Get companies detail",
+                "description": "Get companies detail by ID",
+                "operationId": "b4a58685f5d9a366e18b2d5d96904823",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Update an existing Company",
+                "description": "Update an existing Company",
+                "operationId": "4cd80713e87fba295ae868578872bda1",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Companies"
+                ],
+                "summary": "Delete a Company",
+                "description": "Delete a Company",
+                "operationId": "eea6dd5de85f20c1af2b18475dabc21a",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/company-branches": {
+            "get": {
+                "tags": [
+                    "Company Branches"
+                ],
+                "summary": "Get Company Branches list",
+                "description": "Get Company Branches List as Array",
+                "operationId": "f31c415493a38d48570c2bce08501a4b",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Company Branches"
+                ],
+                "summary": "Create a new Company Branch",
+                "operationId": "4cecd55e28f6935b483f660e8b3a18bb",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/company-branches/{id}": {
+            "get": {
+                "tags": [
+                    "Company Branches"
+                ],
+                "summary": "Get Company Branch detail",
+                "operationId": "a683690f8bb97fc918f694bf8ccd072a",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Company Branches"
+                ],
+                "summary": "Update an existing Company Branch",
+                "operationId": "523555fdba6813a3331f2254def548dd",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Company Branches"
+                ],
+                "summary": "Delete a Company Branch",
+                "operationId": "39f8b192b1bdbf757d42cb438448a6aa",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/company-branches/{id}/restore": {
+            "post": {
+                "tags": [
+                    "Company Branches"
+                ],
+                "summary": "Restore a Company Branch from trash",
+                "operationId": "386d898401597d2a4d6881b9dfa90880",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/contacts": {
+            "get": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Get Contacts list",
+                "description": "Get Contacts List as Array",
+                "operationId": "db28e64fc07e46f3cab854f3ca351c81",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Create a new Contact",
+                "operationId": "a00e2f4f301b871a0a1875e6d8484da0",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/contacts/{id}": {
+            "get": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Get Contact detail",
+                "operationId": "f864beb7ae6562e001b4f442354e876a",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Update an existing Contact",
+                "operationId": "614908199fa0706ab94d7cc94dad80a1",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Delete a Contact",
+                "operationId": "7b8fdc0d9652a7c1dd3330affdca290d",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/contacts/{id}/restore": {
+            "post": {
+                "tags": [
+                    "Contacts"
+                ],
+                "summary": "Restore a Contact from trash",
+                "operationId": "917d0c332f5630c4b6ed54c8028914e8",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/contact-companies": {
+            "get": {
+                "tags": [
+                    "Contact Companies"
+                ],
+                "summary": "Get Contact Companies list",
+                "description": "Get Contact Companies List as Array",
+                "operationId": "index",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Contact Companies"
+                ],
+                "summary": "Create a new Contact Company",
+                "operationId": "store",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/contact-companies/{id}": {
+            "get": {
+                "tags": [
+                    "Contact Companies"
+                ],
+                "summary": "Get Contact Company detail",
+                "operationId": "show",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Contact Companies"
+                ],
+                "summary": "Update an existing Contact Company",
+                "operationId": "update",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Contact Companies"
+                ],
+                "summary": "Delete a Contact Company",
+                "operationId": "destroy",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/contact-companies/{id}/restore": {
+            "post": {
+                "tags": [
+                    "Contact Companies"
+                ],
+                "summary": "Restore a Contact Company from trash",
+                "operationId": "restore",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/countries": {
+            "get": {
+                "tags": [
+                    "Countries"
+                ],
+                "summary": "Get Countries list",
+                "description": "Get Countries List as Array",
+                "operationId": "8a3f183931b15be016c17a39c212bb5d",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Countries"
+                ],
+                "summary": "Create a new Country",
+                "description": "Create a new Country",
+                "operationId": "83f4963fb1af2b82452e203b35faaa9a",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/countries/{id}": {
+            "get": {
+                "tags": [
+                    "Countries"
+                ],
+                "summary": "Get countries detail",
+                "description": "Get countries detail by ID",
+                "operationId": "394474290831f9fe621c3232537a438b",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Countries"
+                ],
+                "summary": "Update an existing Country",
+                "description": "Update an existing Country",
+                "operationId": "386bdcfbc82c97dcb80fe3fd6e91783d",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Countries"
+                ],
+                "summary": "Delete a Country",
+                "description": "Delete a Country",
+                "operationId": "964ead8e1e417a5af6fe83680ae443d7",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/countries/exports": {
+            "post": {
+                "tags": [
+                    "Countries"
+                ],
+                "summary": "Export countries to excel",
+                "operationId": "f62bbb9cb319ebc59836c1b01277e03c",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/dashboards": {
+            "get": {
+                "tags": [
+                    "Dashboard"
+                ],
+                "summary": "Get some information to display on the dashboard",
+                "description": "Get information as Object",
+                "operationId": "2244911295165e2f5da63b75275bb4cc",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/developers": {
+            "get": {
+                "tags": [
+                    "Developers"
+                ],
+                "summary": "Get Developers list",
+                "description": "Get Developers List as Array",
+                "operationId": "13b0912a6e94316af61e7ea8d73e0b28",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Developers"
+                ],
+                "summary": "Create a new Developer",
+                "operationId": "76c8d045d7492329a0b9ad76eba47e84",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/developers/{id}": {
+            "get": {
+                "tags": [
+                    "Developers"
+                ],
+                "summary": "Get developer by ID",
+                "operationId": "2e2b6abfab28289e123697fa65952197",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Developers"
+                ],
+                "summary": "Update an existing Developer",
+                "operationId": "415e7d654f8845a309aec4f283d6cc8b",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Developers"
+                ],
+                "summary": "Delete a Developer",
+                "operationId": "7b5f1be27e17cef4d16bb0568cd62bce",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/developers/trash": {
+            "get": {
+                "tags": [
+                    "Developers"
+                ],
+                "summary": "Get developers trashed list",
+                "description": "Get developers trashed List as Array",
+                "operationId": "5a8c2e85b48c48f82e6c34b49f8ee0ee",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/developers/{id}/restore": {
+            "post": {
+                "tags": [
+                    "developers"
+                ],
+                "summary": "Restore a developer",
+                "description": "Restore a developer",
+                "operationId": "8ebed2e90def049b915e139b89cd6245",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/developers/exports": {
+            "post": {
+                "tags": [
+                    "Developers"
+                ],
+                "summary": "Export developers to excel",
+                "operationId": "43a6d4abb7ba9a69620ae3e83472a2e4",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/development-types": {
+            "get": {
+                "tags": [
+                    "Development Types"
+                ],
+                "summary": "Get DevelopmentTypes list",
+                "description": "Get DevelopmentTypes List as Array",
+                "operationId": "8cc55911fbb0cf8e307277fa30916752",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Development Types"
+                ],
+                "summary": "Create a new Development Type",
+                "operationId": "b5198c5762bd8e0d1bcbf24d47ceab21",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/development-types{id}": {
+            "get": {
+                "tags": [
+                    "Development Types"
+                ],
+                "summary": "Get Development Types by ID",
+                "operationId": "feaef87fd2a2d92ca84eba81fec8d9a7",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/development-types/{id}": {
+            "put": {
+                "tags": [
+                    "Development Types"
+                ],
+                "summary": "Update an existing Development Type",
+                "operationId": "7cc2c662f1f155d23d835e66a47109fe",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Development Types"
+                ],
+                "summary": "Delete a Development Type",
+                "operationId": "d367dc0ab341f1b5da7f88effb0e5c27",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/development-types/trash": {
+            "get": {
+                "tags": [
+                    "Development Types"
+                ],
+                "summary": "Get development Types trashed list",
+                "description": "Get development Types trashed List as Array",
+                "operationId": "94dcd6b251a39a4e2f26a0cfb967d181",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/development-types/{id}/restore": {
+            "post": {
+                "tags": [
+                    "development Types"
+                ],
+                "summary": "Restore a development Type",
+                "description": "Restore a development Type",
+                "operationId": "3d846ab4eeb9f3abf7b3d96ff07e1eeb",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/development-types/exports": {
+            "post": {
+                "tags": [
+                    "Development Types"
+                ],
+                "summary": "Export development-types to excel",
+                "operationId": "f3523691b418fd238a7fc78e8048afc4",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/districts": {
+            "get": {
+                "tags": [
+                    "Districts"
+                ],
+                "summary": "Get Districts list",
+                "description": "Get Districts List as Array",
+                "operationId": "f25047d571a9729ef4b913e9f7c6c9b0",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Districts"
+                ],
+                "summary": "Create a new District",
+                "description": "Create a new District",
+                "operationId": "78901504950a0287078358845a0716f6",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/districts/{id}": {
+            "get": {
+                "tags": [
+                    "Districts"
+                ],
+                "summary": "Get districts detail",
+                "description": "Get districts detail by ID",
+                "operationId": "4eb04f00958cdcc292ccf6b5258a3abe",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Districts"
+                ],
+                "summary": "Update an existing District",
+                "description": "Update an existing District",
+                "operationId": "3011aa6368e7b2b4337f4b85c30b89b7",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Districts"
+                ],
+                "summary": "Delete a District",
+                "description": "Delete a District",
+                "operationId": "b2c7ddc5eccc2cd00b549681f2be1825",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/districts/exports": {
+            "post": {
+                "tags": [
+                    "Districts"
+                ],
+                "summary": "Export districts to excel",
+                "operationId": "cadb42fd7ec7f7ed7efbf68cf05fe7dd",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/facilities": {
+            "get": {
+                "tags": [
+                    "Facilities"
+                ],
+                "summary": "Get Facilities list",
+                "description": "Get Facilities List as Array",
+                "operationId": "8b760496d0707dd5687c8720aa4e299f",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Facilities"
+                ],
+                "summary": "Create a new Facility",
+                "operationId": "1fa44f8be2f82d70d632c9eecbd459b2",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/facilities/{id}": {
+            "get": {
+                "tags": [
+                    "Facilities"
+                ],
+                "summary": "Get Facility detail",
+                "operationId": "185219f2562820f89a3cd61a94bde7f6",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Facilities"
+                ],
+                "summary": "Update an existing Facility",
+                "operationId": "756c83cb94334be5d2e5f078a1579ad2",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Facilities"
+                ],
+                "summary": "Delete a Facility",
+                "operationId": "1e027323105f47f2364e4b932865bd24",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/facilities/trash": {
+            "get": {
+                "tags": [
+                    "Facilities"
+                ],
+                "summary": "Get facilities trashed list",
+                "description": "Get facilities trashed List as Array",
+                "operationId": "3ed05fc78b36fba4e3a90716e42aed15",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/facilities/{id}/restore": {
+            "post": {
+                "tags": [
+                    "Facilities"
+                ],
+                "summary": "Restore a Facility from trash",
+                "operationId": "1e8bb96d25f7da769798432e1cfbe491",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/facilities/exports": {
+            "post": {
+                "tags": [
+                    "Facilities"
+                ],
+                "summary": "Export facilities to excel",
+                "operationId": "bf6408b1c287e9de36076b207fc61ae1",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/uploads/image": {
+            "post": {
+                "tags": [
+                    "File Uploads"
+                ],
+                "summary": "Upload one or multiple images",
+                "operationId": "dfaba26bb0e02199ef1a0466a1200765",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/uploads/images": {
+            "post": {
+                "tags": [
+                    "File Uploads"
+                ],
+                "summary": "Upload one or multiple images",
+                "operationId": "4dbe55f0012982e10a633c6aa646a2f9",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/uploads/document": {
+            "post": {
+                "tags": [
+                    "File Uploads"
+                ],
+                "summary": "Upload one or multiple documents",
+                "operationId": "e58f40c95f2e9d7f63ab7c1d0221c7f3",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/uploads/documents": {
+            "post": {
+                "tags": [
+                    "File Uploads"
+                ],
+                "summary": "Upload one or multiple documents",
+                "operationId": "52ad7c05b6ffd7f281949e3d66cb612b",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/listings": {
+            "get": {
+                "tags": [
+                    "Listings"
+                ],
+                "summary": "Get Listings list",
+                "description": "Get Listings List as Array",
+                "operationId": "3d156651d8f06eb83e358102ea4dc0fe",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/listings/{id}": {
+            "get": {
+                "tags": [
+                    "Listings"
+                ],
+                "summary": "Get Listing detail",
+                "operationId": "6e10568044ef9d942b978691670600c3",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/listings/summaries": {
+            "get": {
+                "tags": [
+                    "Listings"
+                ],
+                "summary": "Get listing summaries detail",
+                "operationId": "a45bc4226ee339808715ca0f51e3244d",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/projects": {
+            "get": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Get Projects list",
+                "description": "Get Projects List as Array",
+                "operationId": "363549109eed597a6edf9a031218ada2",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Create a new Project",
+                "description": "Create a new Project",
+                "operationId": "79d632aaa0d483592f49dff8f0165c6f",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/projects/{id}": {
+            "get": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Get projects detail",
+                "description": "Get projects detail by ID",
+                "operationId": "3469eee89ec0c9678753bfc024059806",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Update an existing Project",
+                "description": "Update an existing Project",
+                "operationId": "a74708b84f31b32d2e96512477913da5",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Restore a Project from trash",
+                "operationId": "55d56e3b290c5418e16a9c6a27b48214",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Delete a Project",
+                "description": "Delete a Project",
+                "operationId": "f58db7b732671088249c6a81e31c746a",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/projects/trash": {
+            "get": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Get project trashed list",
+                "description": "Get project trashed List as Array",
+                "operationId": "e1a6b2baa70b38cc7242e5c6c564b6ff",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/projects/exports": {
+            "post": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Export projects to excel",
+                "operationId": "96eae136dd1faadd23054866e3ade5b1",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/properties": {
+            "get": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Get Properties list",
+                "description": "Get Properties List as Array",
+                "operationId": "297f23c110dfa3fe6cb617be9082a788",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Create a new Property",
+                "operationId": "f4c557c7e0fc1e74c56ed654b35a3f56",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/properties/maps": {
+            "get": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Get Properties map list",
+                "description": "Get Properties map list as Array",
+                "operationId": "90ed366e280363fd365e2779879440b3",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/properties/{id}": {
+            "get": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Get Property detail",
+                "operationId": "5eb67ba5526a2593015c9bea4334b7f1",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Update an existing Property",
+                "operationId": "9a90e7fa84332a5450889ef228d96f47",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Delete a Property",
+                "operationId": "443b710b61ca568290cd4168d5da1d92",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/properties/create-many": {
+            "post": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Create a new Property",
+                "operationId": "1d800492594980a4b5a1fd7efe7be00b",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/properties/trash": {
+            "get": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Get properties trashed list",
+                "description": "Get properties trashed List as Array",
+                "operationId": "40864693299d906c139fc84d50eb8381",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/properties/{id}/restore": {
+            "post": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Restore a Property from trash",
+                "operationId": "42ad2d4b3f58e609c0eb74579136384f",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/properties/{propertyId}/image/{imageId}": {
+            "delete": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Delete a Property image",
+                "operationId": "daeff72df55b3639bc4a71b617783d20",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/properties/{propertyId}/document/{documentId}": {
+            "delete": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Delete a Property document",
+                "operationId": "f12327effd9b83265d203572669de069",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/properties/{propertyId}/contacts": {
+            "delete": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Get list of contacts of a property",
+                "operationId": "ec1e9faa24089241eefb5611d9f498aa",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/properties/{id}/approve": {
+            "post": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Approve property registration",
+                "operationId": "f17d8736c4f6add6a2992c7d4819d30f",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/properties/transfer": {
+            "delete": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Get list of transfer of a property",
+                "operationId": "7bb62143907130ae12b617cca310302c",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/properties/{id}/publish": {
+            "post": {
+                "tags": [
+                    "Properties"
+                ],
+                "summary": "Publish property registration",
+                "operationId": "52f0bcda4291c4c165b87329f675bfe5",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/properties/{property}/documents": {
+            "get": {
+                "tags": [
+                    "Property Documents"
+                ],
+                "summary": "Get Properties document list",
+                "description": "Get Properties Document List as Array",
+                "operationId": "68ae694028cb5f923d75ab30a4e900ef",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/properties/{property}/documents/{document}": {
+            "get": {
+                "tags": [
+                    "Property Documents"
+                ],
+                "summary": "View or download document",
+                "operationId": "af90f32d48ea39b4bbf8ad26a3779de4",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/properties/sample-excel": {
+            "get": {
+                "tags": [
+                    "Sample Excel"
+                ],
+                "summary": "download excel sample",
+                "operationId": "ead0848d2f2cf59b97f854741497291e",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/property-histories": {
+            "get": {
+                "tags": [
+                    "Property Histories"
+                ],
+                "summary": "Get Property Histories list",
+                "description": "Get Property Histories List as Array",
+                "operationId": "50fb5e77681d71aa03c8388c482604f0",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Property Histories"
+                ],
+                "summary": "Create a new Property History",
+                "operationId": "c4e906fb4485a09aa966666236bc885d",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/property-histories/{id}": {
+            "get": {
+                "tags": [
+                    "Property Histories"
+                ],
+                "summary": "Get Property History detail",
+                "operationId": "51b784e04cd7f84fbf5a6ef8cdcce536",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Property Histories"
+                ],
+                "summary": "Update an existing Property History",
+                "operationId": "7b3d0036f3e995e85879091c1f8f52d3",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Property Histories"
+                ],
+                "summary": "Delete a Property History",
+                "operationId": "18b2be41874208cb582e6b771388f971",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/property-histories/{id}/restore": {
+            "post": {
+                "tags": [
+                    "Property Histories"
+                ],
+                "summary": "Restore a Property History from trash",
+                "operationId": "8e52af81c4edbddc8f6556e61a8a81de",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/property-negotiations": {
+            "get": {
+                "tags": [
+                    "Property Negotiations"
+                ],
+                "summary": "Get Property Negotiations list",
+                "description": "Get Property Negotiations List as Array",
+                "operationId": "9ccb94026a398384b9fb292ce1618d46",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Property Negotiations"
+                ],
+                "summary": "Create a new Property Negotiation",
+                "operationId": "331545015ebea01a72d40c6946d4cff5",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/property-negotiations/{id}": {
+            "get": {
+                "tags": [
+                    "Property Negotiations"
+                ],
+                "summary": "Get Property Negotiation detail",
+                "operationId": "f86b7509cae5ffc0513f6d12d80d2a8c",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Property Negotiations"
+                ],
+                "summary": "Update an existing Property Negotiation",
+                "operationId": "ea239649167711d77a49b1b0542479f4",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Property Negotiations"
+                ],
+                "summary": "Delete a Property Negotiation",
+                "operationId": "a77877b3d94c29f7c8e29f72c1e52111",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/property-negotiations/{id}/restore": {
+            "post": {
+                "tags": [
+                    "Property Negotiations"
+                ],
+                "summary": "Restore a Property Negotiation from trash",
+                "operationId": "0bf6416e146bc1aa22b070385f9b1ec1",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/property-types": {
+            "get": {
+                "tags": [
+                    "Property Types"
+                ],
+                "summary": "Get Property Types list",
+                "operationId": "b67fdd7dec041af2d8eff96b583ab690",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Property Types"
+                ],
+                "summary": "Create a new Property Types",
+                "operationId": "6ef62de44030441e31056bee9cbd2ca9",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/property-types/{id}": {
+            "get": {
+                "tags": [
+                    "Property Types"
+                ],
+                "summary": "Get Property Types detail",
+                "operationId": "a69893c42adbf753d13b9221eebcd0b8",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Property Types"
+                ],
+                "summary": "Update an existing Property Types",
+                "operationId": "65fed95ea251738abd3bc14f716552dd",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Property Types"
+                ],
+                "summary": "Delete a Property Types",
+                "operationId": "379accdeffdf02f8ffe1bdb0154474fe",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/property-types/trash": {
+            "get": {
+                "tags": [
+                    "Property Types"
+                ],
+                "summary": "Get property Types trashed list",
+                "description": "Get property Types trashed List as Array",
+                "operationId": "61ef13df8d6714d9ecf839c16f0b4a9a",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/property-types/{id}/restore": {
+            "post": {
+                "tags": [
+                    "property Types"
+                ],
+                "summary": "Restore a property Type",
+                "description": "Restore a property Type",
+                "operationId": "2874ffc6136c6fea9e0bcd34460f565e",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/property-types/exports": {
+            "post": {
+                "tags": [
+                    "Property Types"
+                ],
+                "summary": "Export property-types to excel",
+                "operationId": "0e61ab9c8120dede2d69df64d5d2b28e",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/property-visits": {
+            "get": {
+                "tags": [
+                    "Property Visits"
+                ],
+                "summary": "Get Property Visits list",
+                "description": "Get Property Visits List as Array",
+                "operationId": "860d2b462cb4b5e3a6cec94a86e2f434",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Property Visits"
+                ],
+                "summary": "Create a new Property Visit",
+                "operationId": "d89c14b81e8137e46e9ba7a3cd45cc8d",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/property-visits/{id}": {
+            "get": {
+                "tags": [
+                    "Property Visits"
+                ],
+                "summary": "Get Property Visit detail",
+                "operationId": "58a8766f5c08dd99de515f2e6365ef1f",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Property Visits"
+                ],
+                "summary": "Update an existing Property Visit",
+                "operationId": "bc08fb8ad0f486cd1f90f58d872f3be9",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Property Visits"
+                ],
+                "summary": "Delete a Property Visit",
+                "operationId": "7bd19770bc47166a142967833b5d3441",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/property-visits/{id}/restore": {
+            "post": {
+                "tags": [
+                    "Property Visits"
+                ],
+                "summary": "Restore a Property Visit from trash",
+                "operationId": "509e32fbad01333b0f957b1b46fab245",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/provinces": {
+            "get": {
+                "tags": [
+                    "Provinces"
+                ],
+                "summary": "Get Provinces list",
+                "description": "Get Provinces List as Array",
+                "operationId": "f5c913d3ce8463dc4c41ee6f26601148",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Provinces"
+                ],
+                "summary": "Create a new Province",
+                "description": "Create a new Province",
+                "operationId": "ea80a830bce5ec8a04182b3b27c0365e",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/provinces/{id}": {
+            "get": {
+                "tags": [
+                    "Provinces"
+                ],
+                "summary": "Get provinces detail",
+                "description": "Get provinces detail by ID",
+                "operationId": "ef105c29356fdd52ea58e279b2a416b1",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Provinces"
+                ],
+                "summary": "Update an existing Province",
+                "description": "Update an existing Province",
+                "operationId": "72f9f6369bae15f32ea9aa51aadbadce",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Provinces"
+                ],
+                "summary": "Delete a Province",
+                "description": "Delete a Province",
+                "operationId": "9e823e376bfaf6cf132571cd80af116d",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/provinces/exports": {
+            "post": {
+                "tags": [
+                    "Provinces"
+                ],
+                "summary": "Export provinces to excel",
+                "operationId": "3db4d19282ba21f42ef1b139c04db75c",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/users/roles": {
+            "get": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Get Roles list",
+                "description": "Get Roles List as Array",
+                "operationId": "426fa0609aa19a53f5f4768aaa24ec65",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Update multiple Roles",
+                "operationId": "a4b063755aef1e536055271ae146cc27",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Create a Role",
+                "operationId": "5d59f61fab79c42d8db882593f73d8ed",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/users/roles/{id}": {
+            "get": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Get Role detail",
+                "operationId": "68766af3ebf3540da77438af4e7c91e3",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Update an existing Role",
+                "operationId": "d3fd96b6ffe618765ed0f59a9f694903",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Restore a Role from trash",
+                "operationId": "148bccb010e168e630188b79c78dc85e",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Delete a Role",
+                "operationId": "88cc2efd7c721ec5a3d69c89019807a2",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/settings": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "Get Settings list",
+                "description": "Get Settings List as Array",
+                "operationId": "0b0132593740f35dbbf3e6068cfcb557",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/settings/theme": {
+            "get": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "Get Website Theme",
+                "description": "Get website theme",
+                "operationId": "ee4a9857047b98396fdc8e57cf6b6dfb",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "Update Theme",
+                "description": "Update website theme",
+                "operationId": "d182de2877d7f5d87df04b499885ec5a",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/site-inquiries": {
+            "get": {
+                "tags": [
+                    "Site Inquiries"
+                ],
+                "summary": "Get Site Inquiries list",
+                "description": "Get Site Inquiries List as Array",
+                "operationId": "194f8074f09117b50984488b13832f48",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Site Inquiries"
+                ],
+                "summary": "Create a new Site Inquiry",
+                "operationId": "238cbb0dd9f3c8d25910cb43ce42dae4",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/site-inquiries/{id}": {
+            "get": {
+                "tags": [
+                    "Site Inquiries"
+                ],
+                "summary": "Get Site Inquiry detail",
+                "operationId": "46190ed70dfc966d5288586275c53271",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Site Inquiries"
+                ],
+                "summary": "Update an existing Site Inquiry",
+                "operationId": "66b21dafd65793f1591321cb35481d96",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Site Inquiries"
+                ],
+                "summary": "Delete a Site Inquiry",
+                "operationId": "e84431fe51089b90d1203ddd339e0e9a",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/site-inquiries/{id}/restore": {
+            "post": {
+                "tags": [
+                    "Site Inquiries"
+                ],
+                "summary": "Restore a Site Inquiry from trash",
+                "operationId": "55ae79ff072ac9ccb21bca13bfd331bd",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get users list",
+                "description": "Get User List as Array",
+                "operationId": "69a828aa9462374ec018a80be6b7439a",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create a User",
+                "operationId": "b4ba913fe0023dd990997273c0de959f",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/users/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get User detail",
+                "operationId": "d02e9af9803ef5b8e9b0d9c2e097ff2b",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update an existing User",
+                "operationId": "667674718d9833f05efb493578e6cfd1",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Restore a User from trash",
+                "operationId": "f85a819ccb40e8699ccfd58b1094e0f8",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete a User",
+                "operationId": "7e9269411c8d88f9395548501b031167",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/verify": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Verify User active status",
+                "operationId": "verify",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/users/trash": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get users trashed list",
+                "description": "Get users trashed List as Array",
+                "operationId": "0b8679893ca457de923963e4da94eaf4",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/users/teammates": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get teammate users list",
+                "description": "Get Teammate User List as Array",
+                "operationId": "694942b1c7f83736782320fff0f88065",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/user-profiles": {
+            "get": {
+                "tags": [
+                    "User Profiles"
+                ],
+                "summary": "Get User Profiles list",
+                "description": "Get User Profiles List as Array",
+                "operationId": "0f415a9d085b5a65c1a0937eb0d91ae0",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User Profiles"
+                ],
+                "summary": "Create a new User Profile",
+                "operationId": "401b547ff4c8ca835ee96db8a5cb86e6",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            }
+        },
+        "/api/user-profiles/{id}": {
+            "get": {
+                "tags": [
+                    "User Profiles"
+                ],
+                "summary": "Get User Profile detail",
+                "operationId": "ec5df3be68d46c0d6f8ad15994baec90",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User Profiles"
+                ],
+                "summary": "Update an existing User Profile",
+                "operationId": "ddda4d92d1c9381e35e24336b3af9cf9",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User Profiles"
+                ],
+                "summary": "Delete a User Profile",
+                "operationId": "0fb4c8b2d00c503ec41d73db5b498ca3",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/api/user-teams": {
+            "get": {
+                "tags": [
+                    "User Teams"
+                ],
+                "summary": "Get UserTeams list",
+                "description": "Get UserTeams List as Array",
+                "operationId": "f26eec5addf0f7ae4d70585a4d86ada0",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "User Teams"
+                ],
+                "summary": "CREATE a new UserTeam",
+                "description": "CREATE a new UserTeam",
+                "operationId": "a420a70c2c42accf98fe6ad6ed33533f",
+                "responses": {
+                    "400": {
+                        "description": "Bad request create"
+                    },
+                    "422": {
+                        "description": "Resource Error"
+                    }
+                }
+            }
+        },
+        "/api/user-teams/{id}": {
+            "get": {
+                "tags": [
+                    "User Teams"
+                ],
+                "summary": "Get userTeams detail",
+                "description": "Get userTeams detail by ID",
+                "operationId": "1743a3f2401184f299198d8b70872ced",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User Teams"
+                ],
+                "summary": "UPDATE an existing UserTeam",
+                "description": "UPDATE an existing UserTeam",
+                "operationId": "1b8933e9f894bd5dde4e4afa5cc0ae55",
+                "responses": {
+                    "400": {
+                        "description": "Bad request update"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User Teams"
+                ],
+                "summary": "DELETE a UserTeam",
+                "description": "DELETE a UserTeam",
+                "operationId": "fc8c42d3027808e179c7a1838afa7482",
+                "responses": {
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "Bearer": {
+                "type": "apiKey",
+                "description": "JWT",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}
